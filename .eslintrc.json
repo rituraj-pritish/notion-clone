@@ -1,3 +1,56 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "prettier"
+  ],
+  "globals": {
+    "JSX": true
+  },
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "indent": ["warn", "tab"],
+    "linebreak-style": ["warn", "unix"],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"],
+    "object-curly-spacing": ["warn", "always"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "import/no-anonymous-default-export": "off",
+    "react/jsx-first-prop-new-line": "error",
+    "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+    "react/jsx-closing-tag-location": "error",
+    "react/jsx-props-no-multi-spaces": "error",
+    "react/display-name": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "prettier/prettier": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "react/prop-types": "off",
+    "import/named": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }
