@@ -6,6 +6,7 @@ type StyledButtonProps = {
 }
 export const StyledButton = styled.button<StyledButtonProps>`
 	cursor: pointer;
+  display: inline-block;
 	background: transparent;
 	border: none;
 	border-radius: 4px;
@@ -19,7 +20,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }
 
   ${({isIcon}) => isIcon && css`
-    display: flex;
+    display: inline-flex;
     align-items: center;
     padding: 0;
     justify-content: center;
