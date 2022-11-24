@@ -14,12 +14,12 @@ type ButtonProps = {
 
 type Props = IconButtonProps | ButtonProps
 
-const Button = ({ children, bold, icon }: Props) => {
+const Button = ({ children, bold, icon, ...props }: Props) => {
   if(icon) return (
-    <StyledButton isIcon={!!icon}>{icon}</StyledButton>
+    <StyledButton isIcon={!!icon} {...props}>{icon}</StyledButton>
   )
   return (
-    <StyledButton bold={bold}>{children}</StyledButton>
+    <StyledButton bold={bold} {...props}>{children}</StyledButton>
   )
 }
 

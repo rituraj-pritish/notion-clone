@@ -4,11 +4,20 @@ import ReactModal, { Props as ModalProps, Styles } from 'react-modal'
 import useMousePosition from '@/hooks/useMousePosition'
 import theme from '@/theme'
 
-type ChildrenProp = { children: React.ReactElement }
+type ChildrenProp = { 
+	isVisible: boolean
+	children: React.ReactNode
+	closeModal: VoidFunction
+	showOverlay?: boolean
+	styles?: React.CSSProperties
+	onOpen?: VoidFunction
+	onClose?: VoidFunction
+}
 
 export interface Props extends Omit<ModalProps, 'isOpen' | 'style'> {
-	onOpen?: () => void
-	onClose?: () => void
+	render: (isVisible: boolean, setVisibility: (state: boolean) => void) => void
+	onOpen?: VoidFunction
+	onClose?: VoidFunction
 	visible?: boolean
 	showOverlay?: boolean
 	styles?: React.CSSProperties
@@ -129,14 +138,10 @@ const Modal = ({ render, children, visible, ...otherProps }: Props) => {
 
 	return (
 		<div onClick={(e) => e.stopPropagation()}>
-			{React.cloneElement(render, {
-				onClick: () => {
-					if (typeof render.props.onClick === 'function') render.props.onClick()
-					if (isVisible) return closeModal()
-					openModal()
-				}
-	})}
-			{children}
+			<>
+				{typeof render === 'function' ? render(isVisible, setIsVisible) : render}
+				<ModalContent isVisible={isVisible} closeModal={closeModal} {...otherProps}>{children}</ModalContent>
+			</>
 		</div>
 	)
 }

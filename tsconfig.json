@@ -16,9 +16,8 @@
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
-      "@/atoms": ["atoms/*"],
+      "@/atoms": ["atoms"],
       "@/hooks/*": ["hooks/*"],
-      "@/hooks": ["hooks"],
       "@/theme": ["theme"],
     }
   },
